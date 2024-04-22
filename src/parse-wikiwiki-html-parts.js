@@ -3,7 +3,7 @@ const splitByLevelAnchors = html => html.split('class="anchor"').slice(1, -1)
 const translations = Object.entries({
     'ロングノーツの特殊な取り方を把握しなければ大きく難化':  "hard if you don't know the right way to use long notes",
     'アーク主体につき極めて個人差が大きい':               'large personal differences since it is arc-based',
-    'アークが苦手であれば難化':                         'difficult if you are not good at arcs',
+    'アークが苦手であれば難化':                         'hard if you are not good at arcs',
     'アーク難により個人差大':                           'large personal differences due to arc difficulty',
     'トリル主体につき, 個人差大':                       'large personal differences as it is mainly a trill',
     'トリル主体につき個人差あり':                        'large personal differences as it is mainly a trill',
@@ -42,6 +42,7 @@ const translations = Object.entries({
     '最難関':                                          'the most difficult',
     '現Lv7+':                                         'currently lv7+',
     '現Lv7':                                           'currently lv7',
+    'アーク主体につき':                                  'due to arcs ',
     '特記枠': 'special mention',
     '最下位': 'easiest',
       '下位': 'easier',
