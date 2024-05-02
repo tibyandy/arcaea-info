@@ -13,7 +13,7 @@ c.getWikiWikiTrackCompleteHtml = async () => {
 
 c.updateImagesFromWikiWiki = (ctx) => {
     const { wikiWikiTrackCompleteHtml } = ctx
-    // updateImagesFromWikiWiki.execute(wikiWikiTrackCompleteHtml)
+    updateImagesFromWikiWiki.execute(wikiWikiTrackCompleteHtml)
 }
 
 c.parseSectionsFromWikiWiki = (ctx) => {
