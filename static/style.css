@@ -68,7 +68,7 @@ h3 { background: rgba(128,128,128,0.4); color: #fff; text-shadow: 0 0.2vh 0.2vh 
 #rating_picker > div { flex: 1; }
 
 #root * {
-	transition: all 0.2s ease-out;
+	xtransition: all 0.2s ease-out;
 }
 
 #rating_picker {

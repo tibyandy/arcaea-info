@@ -19,9 +19,17 @@ async function loadCache () {
         return {}
     }
 
-    const result = Object.fromEntries(Object.entries(imagecache).map(([id_etag, shortname]) => [shortname, id_etag.split(':')[1]]))
+    const result = Object.fromEntries(Object.entries(imagecache).map(
+        ([id_etag, shortname]) => [shortname, id_etag.split(':')[1]]))
     console.log('Read image cache.')
     return result
+}
+
+function getShortName (jpName, enName, ext) {
+    return ((jpName === enName)
+        ? jpName : jpName.includes(enName)
+        ? jpName : enName.includes(jpName)
+        ? enName : (enName + '／' + jpName)).replaceAll('#', '＃') + ext
 }
 
 async function checkChangedImages ({ images, imagecache }) {
@@ -31,10 +39,7 @@ async function checkChangedImages ({ images, imagecache }) {
         const [src, rev] = url.split('?rev=')
         const [, jp, type, en, ext] = (src.match(/([^/]*)\/(::[^/]*)\/(.*)(\.[^w][^e][^b][^p]*$|\....\.webp$)/) || [])
         if (!jp) console.log(src)
-        const shortname = ((jp === en)
-            ? jp : jp.includes(en)
-            ? jp : en.includes(jp)
-            ? en : (en + '／' + jp)) + ext
+        const shortname = getShortName(jp, en, ext)
         const cacheRev = imagecache[shortname]
         if (!cacheRev) {
             console.log(`Queueing ${id}:${rev}, not cached: "${shortname}"`)
