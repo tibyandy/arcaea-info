@@ -30,7 +30,8 @@ function songDiff (rawtitle) {
 }
 
 function parseTcData (tcdata) {
-	Object.assign(data, tcdata)
+  const { images, ...tcdataWithoutImages } = tcdata
+	Object.assign(data, tcdataWithoutImages)
 	tcdata.sections.forEach(({ title, charts }) => {
 		let chartId = 0
 		charts.forEach(arrChart => {
@@ -46,13 +47,14 @@ function parseTcData (tcdata) {
 			S.push(chart)
 		})
 	})
+  APP.view.renderImages()
 }
 
 function parseImageData (imageData) {
 	data.images = Object.fromEntries(Object.entries(imageData).map(
     ([i, src]) => [i.split(':')[0], encodeURIComponent(src.split('/').slice(-1)[0])])
   )
-  requestAnimationFrame(() => APP.view.renderImages(true))
+  APP.view.renderImages()
 }
 
 }

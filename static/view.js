@@ -61,10 +61,7 @@ APP.view.renderPageContents = () => {
     ))
     // ${c.imageId} ${c.level} ${c.subrating} [${c.diff}] ${c.title} [${c.pack}] - ${c.artist} ${c.notes}
   })
-  requestAnimationFrame(() => {
-    state.renderedImageDivs = true
-    APP.view.renderImages()
-  })
+  APP.view.renderImages()
 }
 
 function clickRatingPicker (e) {
@@ -72,19 +69,33 @@ function clickRatingPicker (e) {
   e.srcElement.className = 'active'
 }
 
-APP.view.renderImages = (readImageSources) => {
-  if (state.renderedImageDivs && state.readImageSources) {
-    requestAnimationFrame(() => {
-      Object.entries(data.images).forEach(([i, url]) => {
-        i = i.split(':')[0]
-        const s = D.querySelectorAll(`div.jacket[title="${i}"]`);
-        [...s].forEach(i => {
-          i.setAttribute('style', `background-image:url("cache/images/${url}")`)
-        })
+APP.view.renderImages = () => {
+  requestAnimationFrame(() => {
+    Object.entries(data.images).forEach(([i, url]) => {
+      i = i.split(':')[0]
+      const s = D.querySelectorAll(`div.jacket[title="${i}"]`);
+      [...s].forEach(i => {
+        i.setAttribute('style', `background-image:url("cache/images/${url}")`)
       })
     })
-  } else {
-    state.readImageSources = readImageSources
+  })
+}
+
+requestAnimationFrame(renderLoop)
+
+let lastOffsetX = 0
+function renderLoop () {
+  try {
+    const w = D.getElementById('songs').scrollWidth
+    const r = D.querySelector('.level:last-child').getBoundingClientRect()
+    const offsetX = 1 - (r.x / (w - r.width))
+    if (lastOffsetX != offsetX) {
+      D.body.style.backgroundPosition = `${offsetX * 100}% 50%`;
+      lastOffsetX = offsetX
+    }
+  } catch (e) {
+    console.error(e)
   }
+  requestAnimationFrame(renderLoop)
 }
 }
