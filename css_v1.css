@@ -1,0 +1,116 @@
+a { color: #888; display: block; height: 20px; font: 12px sans-serif; line-height: 20px; text-align: center; text-decoration: none; }
+html, body {
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+    max-width: 100%;
+    margin: 0;
+}
+.songs > div > div {
+    color: #8eb;
+    margin: 1.5vw 0.1vw 0.5vw;
+    min-height: 12px;
+}
+:not(.songs):not(.levels) > div > p:first-child {
+    background: #658; color: #fff; padding: 0 2vw;
+    font: 17px sans-serif;
+    line-height: 30px;
+    border: solid #b8e;
+    border-width: 0.2vw 0;
+    letter-spacing: 0.1ch;
+    word-spacing: 0.2ch;
+}
+
+html, p {
+    margin: 0;
+}
+
+.levels {
+    margin: -10vw 0;
+}
+
+div {
+    font: 10.5px sans-serif;
+    line-height: 11px;
+    font-weight: bold;
+    letter-spacing: -0.07ch;
+}
+p {
+    font: 12px sans-serif;
+    line-height: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+:not(.songs):not(.levels) > div:not(.nosongs) > p:first-child {
+    margin: 7vw 0 4vw;
+}
+
+div.nosongs > p:first-child {
+    margin: 0 0 2vw;
+}
+div.nosongs > p:nth-child(2) {
+    text-align: center;
+}
+
+.levels > div > p:first-child {
+    font-size: 26px;
+    line-height: 30px;
+    color: #fff;
+    margin: 14vw 0 5vw;
+    text-align: center;
+}
+
+.songs > div { position: relative }
+
+.songs > div > p:first-child {
+    top: 0;
+    left: 0;
+    border-radius: 2vw 2vw 0 0;
+}
+
+.songs > div > p:first-child,
+.songs > div > p:nth-child(3) {
+    position: absolute;
+    padding: 0 0.5vw;
+    width: 100%;
+    /* backdrop-filter: blur(3px); */
+    text-shadow: 0 0 1px #000, 0.5px 0.5px 2px #000;
+    background: rgba(192,192,192,0.3);
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.songs > div > p:nth-child(3) {
+    letter-spacing: -0.06ch;
+    margin-top: -16px;
+    border-radius: 0 0 2vw 2vw;
+    overflow: hidden;
+}
+
+.songs > div > p:nth-child(2) {
+    border-radius: 0 0 2vw 2vw;
+    width: 100%;
+    overflow: hidden;
+}
+
+div {
+    max-width: 100vw;
+    margin-top: 1.5vw;
+}
+
+.songs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3vw;
+    margin-left: 2vw;
+}
+.songs > div {
+    margin: 0;
+    width: 30vw;
+    border-radius: 2vw;
+    overflow: hidden;
+}
+.songs > div img {
+    width: 100%;
+}
