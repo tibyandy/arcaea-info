@@ -36,7 +36,7 @@ function parseTcData (tcdata) {
 		charts.forEach(arrChart => {
 			const [ level, subrating, imageId, rawtitle, stitle, artist, pack, notes ] = arrChart
 			const diff = songDiff((rawtitle || title))
-			const title = stitle || rawtitle
+			const title = /*stitle || */rawtitle.replace(/\[...\]$/g, '').trim()
 			const chart = { chartId: ++chartId, title, pack, diff, level, subrating, imageId, artist, notes }
 			const song = data.charts[title] = data.charts[title] || {}
 			song[diff] = chart
