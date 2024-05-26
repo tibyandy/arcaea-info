@@ -1,0 +1,8 @@
+{
+    "editor.tabSize": 2,
+    "files.trimTrailingWhitespace": true,
+    "css.format.spaceAroundSelectorSeparator": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+}
