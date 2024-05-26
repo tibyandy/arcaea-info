@@ -77,7 +77,7 @@ APP.view.renderImages = (readImageSources) => {
     requestAnimationFrame(() => {
       Object.entries(data.images).forEach(([i, url]) => {
         i = i.split(':')[0]
-        const s = D.querySelectorAll(`div.jacket[title=${i}]`);
+        const s = D.querySelectorAll(`div.jacket[title="${i}"]`);
         [...s].forEach(i => {
           i.setAttribute('style', `background-image:url("cache/images/${url}")`)
         })

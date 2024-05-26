@@ -1,6 +1,11 @@
 import fs from 'node:fs/promises'
+import './sixtyfour.js'
 
 const cacheFile = './cache/tcdata.json'
+
+function revToB64 (rev) {
+    return sixtyFour.fromHex(rev.slice(-6), 4)    
+}
 
 export default async ({ etag, html }) => {
     const data = await loadCache(etag)
@@ -45,11 +50,9 @@ function parseHtml (fullHtml, etag) {
         },
         { chartsCount: 0, sections: [], images: {} }
     )
-    const imagesIndexed = Object.keys(images)
-    const images2 = Object.fromEntries(Object.entries(images).map(([k, v], i) => ['i' + (i + 100), `${v}?rev=${k}`]))
     const packs = Object.keys(sections.reduce((r, s) => {
         s.charts.forEach(c => {
-            c.img = 'i' + (imagesIndexed.indexOf(c.img) + 100)
+            // c.img = 'i???' + (imagesIndexed.indexOf(c.img) + 100)
             r[c.album] = 1
         })
         return r
@@ -59,8 +62,8 @@ function parseHtml (fullHtml, etag) {
     console.log('Images count:', Object.keys(images).length)
     console.log('Packs count:', packs.length)
     console.log(`Saving TCData cache to: ${cacheFile}`)
-    const tcdata = { etag, sections, images: images2, packs }
-    fs.writeFile(cacheFile, prettyJSON({ etag, sections, images: images2, packs }), { encoding: 'utf8' })
+    const tcdata = { etag, sections, images, packs }
+    fs.writeFile(cacheFile, prettyJSON({ etag, sections, images, packs }), { encoding: 'utf8' })
     return tcdata
 }
 
@@ -137,12 +140,14 @@ function parseImgUrl (s, images) {
     const parts = [...s.match(/([^?]*)\?rev=(.*)/)].map(decodeURIComponent)
     const rev = parts.slice(-1)[0]
     parts[1] = parts[1].replace(/&#(\d+?);/g, (a,b) => String.fromCharCode(b))
-    if (images[rev]) {
-        if (parts[1] != images[rev]) {
-            console.log('Duplicated image rev', rev, parts)
-            console.log('images[rev]', images[rev])
+    const rev64 = revToB64(rev)
+    const fullUrl = `${parts[1]}?rev=${rev}`
+    if (images[rev64]) {
+        if (fullUrl != images[rev64]) {
+            console.log('Duplicated image rev64', rev64, parts)
+            console.log('images[rev64]', images[rev64])
             process.exit(-1)
         }
-    } else images[parts.slice(-1)[0]] = parts[1]
-    return rev
+    } else images[rev64] = fullUrl
+    return rev64
 }

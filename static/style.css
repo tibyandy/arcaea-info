@@ -140,7 +140,7 @@ h3 { background: rgba(128,128,128,0.4); color: #fff; text-shadow: 0 0.2vh 0.2vh 
   font-weight: bold;
 }
 .difficulty > span:nth-child(2) {
-  font-size: 3.2vh; line-height: 2.4vh; height: 2.4vh;
+  font-size: 3.0vh; line-height: 2.4vh; height: 2.4vh;
   padding-bottom: 0.4vh;
   color: #fff;
   letter-spacing: -0.2ch;

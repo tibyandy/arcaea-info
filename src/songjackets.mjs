@@ -19,7 +19,6 @@ async function loadCache () {
         return {}
     }
 
-    
     const result = Object.fromEntries(Object.entries(imagecache).map(([id_etag, shortname]) => [shortname, id_etag.split(':')[1]]))
     console.log('Read image cache.')
     return result

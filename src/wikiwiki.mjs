@@ -40,7 +40,7 @@ async function writeCache (fetchEtag, body) {
     console.log('Caching etag:', fetchEtag)
     fs.writeFile(etagFile, fetchEtag).catch(logErrorMsg)
     console.log('Caching data...')
-    await fs.writeFile(cacheFile, body).catch(logErrorMsg)
+    await fs.writeFile(cacheFile, await body).catch(logErrorMsg)
     return body
 }
 
