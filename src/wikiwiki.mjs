@@ -9,7 +9,10 @@ export default async (online = true) => {
     const { etag, html } = online
         && (await readUrl(wikiWikiPage, cachedEtag))
         || { etag: cachedEtag }
-    console.log(html?.length ? 'Retrieved HTML from cache:' : 'Retrieved HTML from URL:', html?.length ? cacheFile : wikiWikiPage)
+    console.log(
+      (html?.length  || !online) ? 'Retrieved HTML from cache:' : 'Retrieved HTML from URL:',
+      (html?.length  || !online) ? cacheFile : wikiWikiPage
+    )
     return { etag, html: html || cachedData }
 }
 

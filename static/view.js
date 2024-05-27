@@ -87,7 +87,8 @@ let lastOffsetX = 0
 function renderLoop () {
   try {
     const w = D.getElementById('songs').scrollWidth
-    const r = D.querySelector('.level:last-child').getBoundingClientRect()
+    const r = D.querySelector('.level:last-child')?.getBoundingClientRect()
+    if (!r) return setTimeout(() => renderLoop(), 100)
     const offsetX = 1 - (r.x / (w - r.width))
     if (lastOffsetX != offsetX) {
       D.body.style.backgroundPosition = `${offsetX * 100}% 50%`;

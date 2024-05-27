@@ -15,15 +15,21 @@ function load (src) {
 	})
 }
 
-
 (async () => {
   await Promise.all([ load('view'), load('render') ]).then(() => APP.view.renderSkeleton())
 
-  Promise.all([
+  await Promise.all([
     fetch('cache/tcdata.json').then(t => t.json()).then(parseTcData),
+    fetch('cache/ccdata.json').then(t => t.json()).then(parseCcData),
     fetch('cache/imagedata.json').then(t => t.json()).then(parseImageData)
-  ]).then(() => APP.view.renderPageContents())
+  ])
+
+  APP.view.renderPageContents()
+  APP.view.renderImages()
 })()
+
+
+
 
 function songDiff (rawtitle) {
 	const index = diffs.findIndex(d => rawtitle.endsWith(`[${d}]`))
@@ -48,7 +54,10 @@ function parseTcData (tcdata) {
 			S.push(chart)
 		})
 	})
-  APP.view.renderImages()
+}
+
+function parseCcData (ccdata) {
+  data.ccdata = ccdata.songs
 }
 
 function parseImageData (imageData) {

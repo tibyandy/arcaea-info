@@ -6,6 +6,7 @@ sixtyFour = (() => {
     }
 
     function fromNumber (number, maxLength = 8) {
+        number = Math.abs(number)
         let s = ''
         while (number > 0 && s.length < maxLength) {
             const i = number % 64
