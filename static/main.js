@@ -16,13 +16,14 @@ function load (src) {
 }
 
 
+(async () => {
+  await Promise.all([ load('view'), load('render') ]).then(() => APP.view.renderSkeleton())
 
-Promise.all([
-	Promise.all([ load('view'), load('render') ]).then(() => APP.view.renderSkeleton()),
-	fetch('cache/tcdata.json').then(t => t.json()).then(parseTcData),
-	fetch('cache/imagedata.json').then(t => t.json()).then(parseImageData)
-]).then(() => APP.view.renderPageContents())
-
+  Promise.all([
+    fetch('cache/tcdata.json').then(t => t.json()).then(parseTcData),
+    fetch('cache/imagedata.json').then(t => t.json()).then(parseImageData)
+  ]).then(() => APP.view.renderPageContents())
+})()
 
 function songDiff (rawtitle) {
 	const index = diffs.findIndex(d => rawtitle.endsWith(`[${d}]`))
@@ -53,8 +54,8 @@ function parseTcData (tcdata) {
 function parseImageData (imageData) {
 	data.images = Object.fromEntries(Object.entries(imageData).map(
     ([i, src]) => [i.split(':')[0], encodeURIComponent(src.split('/').slice(-1)[0])])
-  )
-  APP.view.renderImages()
+  );
+  setTimeout(() => APP.view.renderImages(), 100)
 }
 
 }

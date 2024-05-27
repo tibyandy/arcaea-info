@@ -36,7 +36,7 @@ APP.view.renderPageContents = () => {
           {div:{_:[
             {h3:`${level ? 'Level ' + level : 'New charts'} Subrating: ${sr}`},
             {div:{class:'charts',_:charts.map(c => !c ? [] : (
-              {div:{class:'chart',_:[
+              {div:{class:`chart ${c.diff}`,_:[
                 {div:{class:'difficulty',_:[
                   {span:c.diff},
                   {span:c.level.replace('﹠',', ')},
@@ -49,7 +49,7 @@ APP.view.renderPageContents = () => {
                     {span:{class:'artist',_:c.artist}},
                   ]},
                   {div:{class:'pack',_:c.pack}},
-                  {div:c.notes}
+                  {div:{class:'notes',_:c.notes}},
                 ]}}
               ]}}
             ))
@@ -93,9 +93,10 @@ function renderLoop () {
       D.body.style.backgroundPosition = `${offsetX * 100}% 50%`;
       lastOffsetX = offsetX
     }
+    requestAnimationFrame(renderLoop)
   } catch (e) {
     console.error(e)
+    setTimeout(() => renderLoop(), 1000)
   }
-  requestAnimationFrame(renderLoop)
 }
 }
