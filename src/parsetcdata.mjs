@@ -1,10 +1,11 @@
 import fs from 'node:fs/promises'
+import translate from './translation.mjs'
 import './sixtyfour.js'
 
 const cacheFile = './cache/tcdata.json'
 
 function revToB64 (rev) {
-    return sixtyFour.fromHex(rev.slice(-6), 4)    
+    return sixtyFour.fromHex(rev.slice(-6), 4)
 }
 
 export default async ({ etag, html }) => {
@@ -111,7 +112,9 @@ function getChartsJson (trs, images, level, rate, sectTitle) {
         const img = parseImgUrl(parts[1], images)
         const [ href, title, artist, pack, notes ] = parts.slice(2).map(normalize)
         return charts.concat([{
-            level, rate: rate || sectTitle, img, title, href: (href != title ? href : false), artist, album: normalizePack(pack), notes: notes || '' 
+            level, rate: rate || sectTitle, img, title, href: (href != title ? href : false), artist, album: normalizePack(pack),
+            // notes: notes || '',
+            notes: translate(notes || '')
         }])
     }, [])
 }
