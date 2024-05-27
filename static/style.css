@@ -1,6 +1,6 @@
 html, body, #root {
   width: 100%;
-  height: 100vh;
+  height: 100vmax;
 }
 body {
 	background: url('BG_tiferet.jpg'); /* url('BG_lanota-conflict.jpg'); */
@@ -8,12 +8,12 @@ body {
   background-position: 0% 50%;
   margin: 0;
   font-family: sans-serif;
-  font-size: 1.7vh;
+  font-size: 1.7vmax;
 }
 #root {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vmax;
 }
 #songs {
   width:100vw;
@@ -33,28 +33,28 @@ body {
   overflow-y: auto;
 }
 
-h2, h3 { margin: 0; text-align: center; line-height: 3.5vh}
-h3 { background: rgba(128,128,128,0.4); color: #fff; text-shadow: 0 0.2vh 0.2vh #000, 0 0 0.2vh #000 }
+h2, h3 { margin: 0; text-align: center; line-height: 3.5vmax}
+h3 { background: rgba(128,128,128,0.4); color: #fff; text-shadow: 0 0.2vmax 0.2vmax #000, 0 0 0.2vmax #000 }
 
 #footer {
 	width: 100%;
-	font-size: 2vh;
-	line-height: 5vh;
+	font-size: 2vmax;
+	line-height: 5vmax;
 	display: none;
 	border-top: solid 2px #000;
 	text-align: center;
 }
 
 #footer > div {
-	height: 5vh;
+	height: 5vmax;
 }
 
 #footer.minimized {
-	height: 5vh;
+	height: 5vmax;
 }
 
 #footer.picking_ratings {
-	height: 10vh;
+	height: 10vmax;
 	flex-direction: column;
 }
 
@@ -74,21 +74,21 @@ h3 { background: rgba(128,128,128,0.4); color: #fff; text-shadow: 0 0.2vh 0.2vh 
 #rating_picker {
 	display: flex;
   color: transparent;
-  text-shadow: 0 0 0.15vh #040, 0 0 0.15vh #040;
+  text-shadow: 0 0 0.15vmax #040, 0 0 0.15vmax #040;
 }
 
 .minimized #rating_picker {
-	width: 5vh;
+	width: 5vmax;
 }
 
 .active {
-  text-shadow: 0 0.1vh 0.15vh #080, 0 0.1vh 0.15vh #080;
+  text-shadow: 0 0.1vmax 0.15vmax #080, 0 0.1vmax 0.15vmax #080;
   color: #fff;
 }
 
 .charts {
   margin-top: 3vh;
-  margin-bottom: 0vh;
+  margin-bottom: 0vmax;
 }
 .chart {
   display: flex;
@@ -100,41 +100,41 @@ h3 { background: rgba(128,128,128,0.4); color: #fff; text-shadow: 0 0.2vh 0.2vh 
 }
 .difficulty {
   padding: 0;
-  margin-left: 0.5vh;
-  width: 6.5vh;
+  margin-left: 0.5vmax;
+  width: 6.5vmax;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  border-top: solid 0.1vh #fffc;
-  border-bottom: solid 0.1vh #8888;
+  border-top: solid 0.1vmax #fffc;
+  border-bottom: solid 0.1vmax #8888;
   word-spacing: -0.5ch;
 }
 .jacket {
-  border-top: solid 0.1vh #fffc;
-  border-bottom: solid 0.1vh #8888;
-  width: 15vh;
-  min-width: 15vh;
-  height: 7vh;
+  border-top: solid 0.1vmax #fffc;
+  border-bottom: solid 0.1vmax #8888;
+  width: 15vmax;
+  min-width: 15vmax;
+  height: 7vmax;
   background-size: cover;
   background-position: 50% 30%;
 }
 .info {
-  border-top: solid 0.1vh #fffc;
-  border-bottom: solid 0.1vh #8888;
+  border-top: solid 0.1vmax #fffc;
+  border-bottom: solid 0.1vmax #8888;
   padding: 0;
-  margin-right: 0.5vh;
+  margin-right: 0.5vmax;
   display: flex;
   flex-direction: column;
   justify-content: start;
-  width: calc(100vw - 22.5vh);
+  width: calc(100vw - 22.5vmax);
   position: relative;
   background: #222c;
 }
 .info > div:nth-child(1) {
-  line-height: 2.2vh;
-  height: 2.2vh;
-  font-size: 1.75vh;
+  line-height: 2.2vmax;
+  height: 2.2vmax;
+  font-size: 1.75vmax;
   font-weight: bold;
   background: #fff8;
 }
@@ -145,28 +145,28 @@ h3 { background: rgba(128,128,128,0.4); color: #fff; text-shadow: 0 0.2vh 0.2vh 
   display: block;
 }
 .notes {
-  line-height: 1.4vh;
-  height: 2.8vh;
+  line-height: 1.4vmax;
+  height: 2.8vmax;
   color: #ff8;
-  font-size: 1.25vh;
+  font-size: 1.25vmax;
   display: flex;
   align-items: flex-end;
-  padding: 0 0.1vh 0.2vh 0.4vh;
+  padding: 0 0.1vmax 0.2vmax 0.4vmax;
 }
 
 .pack {
-  padding: 0 0.5vh;
-  font-size: 1.25vh;
+  padding: 0 0.5vmax;
+  font-size: 1.25vmax;
   color: #fff;
   font-weight: bold;
-  height: 1.8vh;
-  line-height: 1.75vh;
-  text-shadow: 0 -0.05vh 0.1vh #000, 0 0.05vh 0.1vh #000, 0 0.05vh 0.2vh #000, 0 0.1vh 0.2vh #000, 0 0.15vh 0.2vh #000;
+  height: 1.8vmax;
+  line-height: 1.75vmax;
+  text-shadow: 0 -0.05vmax 0.1vmax #000, 0 0.05vmax 0.1vmax #000, 0 0.05vmax 0.2vmax #000, 0 0.1vmax 0.2vmax #000, 0 0.15vmax 0.2vmax #000;
 }
 
 .title {
-  font-weight: bold; color: #fff; padding: 0 0 0 0.5vh;
-  text-shadow: 0 -0.05vh 0.1vh #000, 0 0.05vh 0.1vh #000, 0 0.05vh 0.2vh #000, 0 0.1vh 0.2vh #000, 0 0.15vh 0.2vh #000;
+  font-weight: bold; color: #fff; padding: 0 0 0 0.5vmax;
+  text-shadow: 0 -0.05vmax 0.1vmax #000, 0 0.05vmax 0.1vmax #000, 0 0.05vmax 0.2vmax #000, 0 0.1vmax 0.2vmax #000, 0 0.15vmax 0.2vmax #000;
 }
 .artist { display: none; /* padding-left: 1ch; color: rgba(128,255,255,0.7) */ }
 
@@ -175,23 +175,23 @@ h3 { background: rgba(128,128,128,0.4); color: #fff; text-shadow: 0 0.2vh 0.2vh 
   white-space: nowrap;
 }
 .difficulty > span:nth-child(1) {
-/*  font-size: 1.8vh; line-height: 1.8vh; height: 1.8vh;
+/*  font-size: 1.8vmax; line-height: 1.8vmax; height: 1.8vmax;
   color: #fff;
   font-weight: bold;*/
   display: none;
 }
 .difficulty > span:nth-child(2) {
-  font-size: 4.0vh; line-height: 3.4vh; height: 3.4vh;
-  padding-bottom: 0.4vh;
+  font-size: 4.0vmax; line-height: 3.4vmax; height: 3.4vmax;
+  padding-bottom: 0.4vmax;
   color: #fff;
   letter-spacing: -0.2ch;
   font-family: serif;
-  text-shadow: 0 -0.05vh 0.1vh #000, 0 0.05vh 0.1vh #000, 0 0.05vh 0.2vh #000, 0 0.1vh 0.2vh #000, 0 0.15vh 0.2vh #000;
+  text-shadow: 0 -0.05vmax 0.1vmax #000, 0 0.05vmax 0.1vmax #000, 0 0.05vmax 0.2vmax #000, 0 0.1vmax 0.2vmax #000, 0 0.15vmax 0.2vmax #000;
 }
-.difficulty > span:nth-child(3) { font-size: 1.6vh; line-height: 1.6vh;
+.difficulty > span:nth-child(3) { font-size: 1.6vmax; line-height: 1.6vmax;
   font-weight: bold;
   color: #fff;
-  text-shadow: 0 -0.05vh 0.1vh #000, 0 0.05vh 0.1vh #000, 0 0.05vh 0.2vh #000, 0 0.1vh 0.2vh #000, 0 0.15vh 0.2vh #000;
+  text-shadow: 0 -0.05vmax 0.1vmax #000, 0 0.05vmax 0.1vmax #000, 0 0.05vmax 0.2vmax #000, 0 0.1vmax 0.2vmax #000, 0 0.15vmax 0.2vmax #000;
  }
 .PST .difficulty, .PST .title { background: linear-gradient( .625turn, #abdeef 0%, #027aac 66%, #027aac 100%) }
 .PRS .difficulty, .PRS .title { background: linear-gradient( .625turn, #e9e7b6 0%, #6d8d41 66%, #6d8d41 100%) }
