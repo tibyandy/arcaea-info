@@ -1,6 +1,6 @@
 html, body, #root {
   width: 100%;
-  height: 100vmax;
+  height: 100vh;
 }
 body {
 	background: url('BG_tiferet.jpg'); /* url('BG_lanota-conflict.jpg'); */
@@ -13,7 +13,7 @@ body {
 #root {
   display: flex;
   flex-direction: column;
-  height: 100vmax;
+  height: 100vh;
 }
 #songs {
   width:100vw;
