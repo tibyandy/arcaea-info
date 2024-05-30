@@ -57,7 +57,7 @@ function parseTcData (tcdata) {
 }
 
 function parseCcData (ccdata) {
-  data.ccdata = ccdata.songs
+  data.songs = Object.entries(ccdata.songs)
 }
 
 function parseImageData (imageData) {

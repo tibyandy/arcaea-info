@@ -1,6 +1,9 @@
-aliases = {
+export const aliases = Object.fromEntries(Object.entries({
+"Alice à la mode": "Alice à la mode ¨ Masanori Akita",
 "aterlbus": "αterlβus ¨ Aoi",
+"αterlβus": "αterlβus ¨ Aoi",
 "［X］": "[X] ¨ Blacklolita",
+"[X]": "[X] ¨ Blacklolita",
 "DX超性能フルメタル少女": "DX Choseinou Full Metal Shojo ¨ IOSYS TRAX (uno with.ちよこ)",
 "GLORY：ROAD": "GLORY：ROAD ¨ uma vs. モリモリあつし",
 "II": "͟͝͞Ⅱ́̕ ¨ Cytus",
@@ -12,6 +15,7 @@ aliases = {
 "vsキミ戦争": "Romance Wars ¨ U-ske (feat. lueur)",
 "yuardina": "γuarδina ¨ Aoi",
 "guardina": "γuarδina ¨ Aoi",
+"γuarδina": "γuarδina ¨ Aoi",
 "アリス・リデルに捧ぐ": "To: Alice Liddell ¨ モリモリあつし",
 "アローンアンドローン": "Alone ＆ Lorn ¨ Ponchi♪ feat.はぁち",
 "クロートーと星の観測者": "Clotho and the stargazer ¨ しーけー",
@@ -32,6 +36,7 @@ aliases = {
 "夜桜吹雪": "Yosakura Fubuki ¨ A.SAKA",
 "妖艶魔女 -trappola bewitching-": "trappola bewitching ¨ gmtn.",
 "彩る夏の恋花火": "Summer Fireworks of Love ¨ karatoPαnchii feat. はるの",
+"秋の陽炎": "Haze of Autumn ¨ karatoPαnchii feat. はるの",
 "彼方の夢へと": "To the Furthest Dream ¨ ii/night feat. 綺良雪",
 "心": "Heart ¨ 削除 (Violin : Katali)",
 "怒槌": "Ikazuchi ¨ 光吉猛修",
@@ -56,9 +61,11 @@ aliases = {
 "迷える音色は恋の唄": "A Wandering Melody of Love ¨ からとP⍺ոchii少年 feat.はるの",
 "雨神楽": "Amekagura ¨ 荒谷サトル",
 "魔王": "World Ender ¨ sasakure.UK × TJ.hangneil",
-}
+"最強STRONGER": "SAIKYO STRONGER ¨ REDALiCE vs USAO",
+"ヒュブリスの頂に聳えるのは": "Hybris (The one who shattered) ¨ qfeileadh feat.のあ"
+}).map(([k, v]) => [k, v.split(" ¨ ")]));
 
-const unaliasedSongs = [
+export const unaliased = Object.fromEntries([
 "#1f1e33 ¨ かめりあ(EDP)",
 "〇、 ¨ Kolaa ＆ 熊子",
 "1F√ ¨ WHITEFISTS",
@@ -70,7 +77,6 @@ const unaliasedSongs = [
 "AI[UE]OON ¨ MYUKKE.",
 "Aleph-0 ¨ LeaF",
 "Alexandrite ¨ WAiKURO",
-"Alice à la mode ¨ Masanori Akita",
 "Alice's Suitcase ¨ Endorfin.",
 "Altair (feat. *spiLa*) ¨ kamome sano ＆ you",
 "Altale ¨ Sakuzyo",
@@ -198,14 +204,12 @@ const unaliasedSongs = [
 "Grimheart ¨ Puru",
 "Halcyon ¨ xi",
 "Hall of Mirrors ¨ Sta",
-"Haze of Autumn ¨ karatoPαnchii feat. はるの",
 "Head BONK ache ¨ saaa ft. MC iwata Bros.",
 "Heart Jackin' ¨ Yu_Asahina",
 "Heavenly caress ¨ Noah",
 "Heavensdoor ¨ LeaF",
 "HELLOHELL ¨ 暁Records",
 "HIVEMIND ¨ かたぎり",
-"Hybris (The one who shattered) ¨ qfeileadh feat.のあ",
 "I've heard it said ¨ Combatplayer",
 "Iconoclast ¨ Yamajet",
 "Ignotus ¨ ak+q",
@@ -328,7 +332,6 @@ const unaliasedSongs = [
 "Rise of the World ¨ cosMo＠暴走P",
 "Rugie ¨ Feryquitous feat. Sennzai",
 "SACRIFICE feat. ayame ¨ Masayoshi Minoshima(ALR)",
-"SAIKYO STRONGER ¨ REDALiCE vs USAO",
 "Sakura Fubuki ¨ Street",
 "san skia ¨ ユアミトス",
 "Sayonara Hatsukoi ¨ REDSHiFT",
@@ -399,4 +402,4 @@ const unaliasedSongs = [
 "μ ¨ Frums",
 "ΟΔΥΣΣΕΙΑ ¨ Sober Bear",
 "ω4 ¨ 穴山大輔 VS 光吉猛修 VS Kai",
-]
+].map(v => v.split(" ¨ ")));

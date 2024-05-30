@@ -10,8 +10,8 @@ function revToB64 (rev) {
 
 export default async ({ etag, html }) => {
     const data = await loadCache(etag)
-    const { sections, images } = data || parseHtml(html, etag)
-    return { sections, images }
+    const { sections, images, packs } = await (data || parseHtml(html, etag))
+    return { sections, images, packs }
 }
 
 async function loadCache (etag) {
@@ -19,13 +19,8 @@ async function loadCache (etag) {
     const tcdata = await fs.readFile(cacheFile, 'utf8').then(JSON.parse)
         .catch(e => console.log('Could not read TCData cache:', e.message))
 
-    if (!tcdata || !tcdata.etag) {
-        console.log('Invalidating TCData cache.\n')
-        return
-    } else if (tcdata.etag !== etag) {
-        console.log('TCData cache expired. Cached etag:', tcdata.etag)
-        return
-    }
+    if (!tcdata || !tcdata.etag) return console.log('Invalidating TCData cache.\n')
+    else if (tcdata.etag !== etag) return console.log('TCData cache expired. Cached etag:', tcdata.etag)
 
     console.log(`Read TCData from cache: ${cacheFile}`)
     console.log('Sections count:', Object.keys(tcdata.sections).length)
@@ -34,7 +29,7 @@ async function loadCache (etag) {
     return tcdata
 }
 
-function parseHtml (fullHtml, etag) {
+async function parseHtml (fullHtml, etag) {
     console.log('Parsing TCData from WikiWiki HTML...')
     const interestingHtml = trimInterestedHtml(fullHtml)
     // console.log(interestingHtml); process.exit(0)
@@ -63,13 +58,13 @@ function parseHtml (fullHtml, etag) {
     console.log('Images count:', Object.keys(images).length)
     console.log('Packs count:', packs.length)
     console.log(`Saving TCData cache to: ${cacheFile}`)
-    const tcdata = { etag, sections, images, packs }
-    fs.writeFile(cacheFile, prettyJSON({ etag, sections, images, packs }), { encoding: 'utf8' })
-    return tcdata
+    const tcdata = prettyJSON({ etag, sections, images, packs })
+    await fs.writeFile(cacheFile, tcdata, { encoding: 'utf8' })
+    return JSON.stringify(tcdata)
 }
 
 function normalizePack (pack) {
-    return pack.replaceAll(/(\.|\:.*| II|Collaboration|Ch.|Chapter )/g, '').replaceAll(/\s+/g, ' ').replaceAll(/\(\s/g, '(').trim()
+    return pack.replaceAll('(Lasting Eden','(').replaceAll(/(\.|\:.*|Collaboration|Ch.|Chapter )/g, '').replaceAll(/\s+/g, ' ').replaceAll(/\(\s/g, '(').trim()
 }
 
 function acronym (pack) {
@@ -122,9 +117,10 @@ function getChartsJson (trs, images, level, rate, sectTitle) {
 function getSectionLevelRateTitle (html) {
     const title = html[1].replaceAll(/<[^>]*>/g, '').replaceAll(/\s\s*/g, ' ').trim()
     const level = [...(title.matchAll(/level (\d+\+?)/ig) || [])].map(([,x]) => x).join('﹠')
-    const rate = title.includes('特記枠') ? '!!'
-        : title.includes('未反映譜面') ? 'new'
-        : title.includes('詐称') ? '!!'
+    const rate = title.includes('特記枠') ? 'Other (PST, PRS)'
+        : (title === '新規追加楽曲') ? 'new'
+        : title.includes('未反映譜面') ? 'not rated'
+        : title.includes('詐称') ? 'spoof'
         : title.match(/\[([-+]*\d*).*\]/)?.[1] || title.match(/\[([^\]]*)\]/)?.[1] || ''
     return { title, level, rate }
 }

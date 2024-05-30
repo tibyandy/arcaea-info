@@ -14,8 +14,8 @@ async function run () {
   console.log('')
   const { etag, html } = await fetchTrackCompleteHtml(false)
   const { songs } = await parseCCData({ lastModified, html: levelHtml })
-  const { etag: tcetag, sections, images, packs } = await parseTCData({ etag, html })
-  updateSongJacketsAndNames({ tcetag, images })
-  buildPage()
+  const { etag: tcetag, sections, images: _images, packs } = await parseTCData({ etag, html })
+  const images = await updateSongJacketsAndNames({ tcetag, images: _images })
+  await buildPage({ songs, sections, images, packs })
 }
 

@@ -6,7 +6,8 @@ const cachePath = './cache/images/'
 export default async ({ tcetag, images }) => {
     const imagecache = await loadCache()
     const newcache = await checkChangedImages({ images, imagecache })
-    fs.writeFile(cacheFile, JSON.stringify(newcache, null, 2), { encoding: 'utf8' })
+    await fs.writeFile(cacheFile, JSON.stringify(newcache, null, 2), { encoding: 'utf8' })
+    return newcache
 }
 
 async function loadCache () {

@@ -6,8 +6,7 @@ const cacheFile = './cache/ccdata.json'
 
 export default async ({ lastModified, html }) => {
     const data = await loadCache(lastModified)
-    const { songs } = data || parseHtml(html, lastModified)
-    return { songs }
+    return data || parseHtml(html, lastModified)
 }
 
 async function loadCache (lastModified) {
